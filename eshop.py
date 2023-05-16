@@ -81,7 +81,7 @@ def add_order(customer_id, status_id):
 # Užsakymas pagal ID
 
 def get_order(order_id):
-    order = session.query(Order).get(order_id)
+    order = session.get(Order, order_id)
     return order
     # if order:
     #     print("Užsakymo informacija:")
@@ -93,15 +93,15 @@ def get_order(order_id):
     #     print("Užsakymas nerastas!")
 
 def change_order_status(order_id, new_status_id):
-    order = session.query(Order).get(order_id)
+    order = session.get(Order, order_id)
     if order:
         order.status_id = new_status_id
         session.commit()
 
 def add_products_to_order(order_id, product_id, quantity):
-    order = session.query(Order).get(order_id)
+    order = session.get(Order, order_id)
     if order:
-        product = session.query(Product).get(product_id)
+        product = session.get(Product, product_id)
         if product:
             order_product = OrderProduct(order_id=order_id, product_id=product_id, quantity=quantity)
             session.add(order_product)
