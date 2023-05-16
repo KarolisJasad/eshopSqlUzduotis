@@ -1,5 +1,4 @@
 import PySimpleGUI as sg
-import eshop
 import eshop_frontend_main
 
 window = eshop_frontend_main.window
