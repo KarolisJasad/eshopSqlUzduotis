@@ -16,7 +16,7 @@ class OrderProduct(Base):
     id = mapped_column(Integer, primary_key=True)
     order_id = mapped_column("order_id", Integer, ForeignKey('order.id'))
     product_id = mapped_column("product_id", Integer, ForeignKey('product.id'))
-    quantity = mapped_column("quantity", Integer)
+    quantity = mapped_column("quantity", Integer) #nullable=False, default=0**
     order = relationship("Order", back_populates="order_products")
     product = relationship("Product")
 
